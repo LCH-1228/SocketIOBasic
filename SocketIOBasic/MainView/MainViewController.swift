@@ -6,13 +6,17 @@
 //
 
 import UIKit
+import Combine
 
 final class MainViewController: UIViewController {
   
   private let mainView: MainView
+  private let viewModel: MainViewModel
+  private var cancellables = Set<AnyCancellable>()
   
-  init(mainView: MainView) {
+  init(mainView: MainView, viewModel: MainViewModel) {
     self.mainView = mainView
+    self.viewModel = viewModel
     super.init(nibName: nil, bundle: nil)
   }
   
@@ -24,6 +28,7 @@ final class MainViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     setupView()
+    setupBindings()
   }
   
   private func setupView() {
@@ -39,10 +44,26 @@ final class MainViewController: UIViewController {
     
     mainView.onSendButton = { [weak self] in
       guard let self else { return }
-      print(self.mainView.getInputFieldText())
+      self.viewModel.sendMessage(self.mainView.getInputFieldText())
       self.mainView.resetInputField()
       self.view.endEditing(true)
     }
+  }
+  
+  private func setupBindings() {
+    viewModel.$statusMessage
+      .receive(on: DispatchQueue.main)
+      .sink { [weak self] status in
+        self?.mainView.setStatusLabel(title: "Status: \(status)")
+      }
+      .store(in: &cancellables)
+    
+    viewModel.$outputMessage
+      .receive(on: DispatchQueue.main)
+      .sink { [weak self] message in
+        self?.mainView.setOutputField(text: message)
+      }
+      .store(in: &cancellables)
   }
   
   override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
