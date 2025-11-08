@@ -1,0 +1,14 @@
+{
+  "name": "socket-server",
+  "version": "1.0.0",
+  "description": "Simple Socket.IO learning server",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "author": "LCH-1228",
+  "type": "commonjs",
+  "dependencies": {
+    "socket.io": "^4.8.1"
+  }
+}
