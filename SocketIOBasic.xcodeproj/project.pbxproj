@@ -6,6 +6,10 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		9B794A742EBF68990041068C /* SocketIO in Frameworks */ = {isa = PBXBuildFile; productRef = 9B794A732EBF68990041068C /* SocketIO */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
 		9B794A592EBF65690041068C /* SocketIOBasic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SocketIOBasic.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -36,6 +40,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9B794A742EBF68990041068C /* SocketIO in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -78,6 +83,7 @@
 			);
 			name = SocketIOBasic;
 			packageProductDependencies = (
+				9B794A732EBF68990041068C /* SocketIO */,
 			);
 			productName = SocketIOBasic;
 			productReference = 9B794A592EBF65690041068C /* SocketIOBasic.app */;
@@ -107,6 +113,9 @@
 			);
 			mainGroup = 9B794A502EBF65690041068C;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				9B794A722EBF68990041068C /* XCRemoteSwiftPackageReference "socket.io-client-swift" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 9B794A5A2EBF65690041068C /* Products */;
 			projectDirPath = "";
@@ -333,6 +342,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		9B794A722EBF68990041068C /* XCRemoteSwiftPackageReference "socket.io-client-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/socketio/socket.io-client-swift.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		9B794A732EBF68990041068C /* SocketIO */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9B794A722EBF68990041068C /* XCRemoteSwiftPackageReference "socket.io-client-swift" */;
+			productName = SocketIO;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 9B794A512EBF65690041068C /* Project object */;
 }
