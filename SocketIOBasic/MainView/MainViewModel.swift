@@ -16,7 +16,11 @@ final class MainViewModel {
   
   private var socketClient: SocketIOClient?
   private var socketManager: SocketManager?
+  #if targetEnvironment(simulator)
+  private let urlString = "http://localhost:8080"
+  #else
   private let urlString = "http://<Mac IP>:8080"
+  #endif
   
   init() {
     setupSocket()
